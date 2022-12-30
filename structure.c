@@ -7,7 +7,7 @@ struct student
     int no;
     struct sub
     {
-        int pps;
+        float pps;
         float bee;
         float maths;
     } marks;
