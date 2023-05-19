@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,200&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  width: 100%;
+}
+body{
+  background-color: #c2bdbd;
+}
+.team-section {
+  width: 100%;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+
+}
+
+.team-section .container .row {
+  width: 60%;
+  margin: auto;
+}
+
+.team-section .container .row .title {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.team-section .container .row .title h1 {
+  font-size: 35px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #eb6234;
+}
+.team-section .container .row .title p
+{
+  font-size: 18px;
+  font-family: sans-serif;
+  margin: 30px 0px;
+  color: #4a4949;
+} 
+.team-section .container .team-card {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-gap: 40px;
+  /* margin-top: 50px; */
+
+}
+.team-section .container .team-card .card{
+  width: 100%;
+  background-color: #c2bdbd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  cursor: pointer;
+}
+.team-section .container .team-card .card .team-section img{
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 6px solid red;
+}
+.content{
+  margin-top: 0;
+}
