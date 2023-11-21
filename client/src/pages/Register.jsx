@@ -80,8 +80,8 @@ function Register() {
                 <i class="fas fa-lock"></i>
               </div>
             </div>
-            <input class="btn" type="submit" value="Register" />
             <span class="extra-line"></span>
+            <button className="btn" value="Register" type="submit">Register</button>
           </form>
         </div>
       </div>
