@@ -1,3 +1,5 @@
+// This Is component is doing register && Login (Validation).
+
 const User = require("../models/user");
 const { hashPassword, comparePassword } = require("../helpers/auth");
 
@@ -26,7 +28,6 @@ const registerUser = async (req, res) => {
     }
 
     //Chech Email Is Exist OR Not.
-
     const exist = await User.findOne({ email });
     if (exist) {
       return res.json({

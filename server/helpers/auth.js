@@ -1,3 +1,5 @@
+// it it doing bycrption && Cmopare of Password.
+
 const bcrypt = require("bcrypt");
 
 const hashPassword = (password) => {

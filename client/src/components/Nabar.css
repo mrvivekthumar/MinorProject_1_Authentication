@@ -1,20 +1,24 @@
-
-body{
+body {
     background-color: plum;
-}.nav{
+}
+
+.nav {
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 300;
     text-decoration: none;
-    margin-bottom: 25px;;
+    margin-bottom: 25px;
+    ;
 }
-.link{
+
+.link {
     display: flex;
     color: black;
     font-weight: 600;
     margin-left: 20px;
 }
-.link:hover{
-    color: purple;
+
+.link:hover {
+    color: white;
 }

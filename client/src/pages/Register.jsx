@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { toast } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import "./register.css";
 
@@ -25,7 +25,7 @@ function Register() {
         toast.error(data.error);
       } else {
         setData({});
-        toast.success("Login Successful. Welcome");
+        toast.success("Register Successful. Welcome");
         navigate("/login");
       }
     } catch (error) {
@@ -46,7 +46,7 @@ function Register() {
               <div class=" flex-r input">
                 <input
                   type="text"
-                  placeholder="USername"
+                  placeholder="Username"
                   value={data.name}
                   onChange={(e) => setData({ ...data, name: e.target.value })}
                 />
@@ -58,7 +58,7 @@ function Register() {
               <div class=" flex-r input">
                 <input
                   type="email"
-                  placeholder="Email"
+                  placeholder="E-mail"
                   value={data.email}
                   onChange={(e) => setData({ ...data, email: e.target.value })}
                 />
@@ -80,12 +80,6 @@ function Register() {
                 <i class="fas fa-lock"></i>
               </div>
             </div>
-
-            {/* <div class="check">
-              <input type="checkbox" name="" id="" />
-              <span>I've read and agree with T&C</span>
-            </div> */}
-
             <input class="btn" type="submit" value="Register" />
             <span class="extra-line"></span>
           </form>
@@ -94,5 +88,4 @@ function Register() {
     </div>
   );
 }
-
 export default Register;

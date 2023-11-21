@@ -1,3 +1,6 @@
+// it is a Schema 
+// Schema Is bassically logical representation of data.
+
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 

@@ -8,7 +8,7 @@ function Login() {
   const navigate = useNavigate();
   const [data, setData] = useState({
     email: "",
-    passwor: "",
+    password: "",
   });
 
   const loginUser = async (e) => {
@@ -47,7 +47,6 @@ function Login() {
                   value={data.email}
                   onChange={(e) => setData({ ...data, email: e.target.value })}
                 />
-                {/* <i class="fas fa-at"></i> */}
               </div>
             </div>
 
@@ -62,7 +61,6 @@ function Login() {
                     setData({ ...data, password: e.target.value })
                   }
                 />
-                {/* <i class="fas fa-lock"></i> */}
               </div>
             </div>
 

@@ -11,15 +11,15 @@ axios.defaults.baseURL = "http://localhost:8000";
 axios.defaults.withCredentials = true;
 
 function App() {
+
   return (
     <>
       <Navbar />
-      <Toaster position="bottom-right" toastOptions={{ duration: 2000 }} />
+      <Toaster position="bottom-right" toastOptions={{ duration: 5000 }} />
       <Routes>
-        <Route className = "home"path="/" element={<Home />} />
+        <Route className="home" path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        {/* <Route path="/logi" element={< />} /> */}
       </Routes>
     </>
   );
