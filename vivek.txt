@@ -1,4 +1,4 @@
 mongodb Details 
 cluster Name : Projecct 0
-connection String : mongodb+srv://vivek_Thumar:VivekThumar@vivek.xmei1cv.mongodb.net/
+connection String :mongodb+srv://vivek_Thumar:VivekThumar@vivek.xmei1cv.mongodb.net/
 Password : VivekThumar
