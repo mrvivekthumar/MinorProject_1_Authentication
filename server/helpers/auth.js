@@ -1,4 +1,4 @@
-// it it doing bycrption && Cmopare of Password.
+// it it doing bycrption && Compare of Password.
 
 const bcrypt = require("bcrypt");
 
