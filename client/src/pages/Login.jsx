@@ -3,7 +3,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useNavigate, Link } from "react-router-dom";
 import { AuthContext } from "../App";
-import "../styles/Login.css";
+import "./styles/Login.module.css";
 
 function Login() {
   const navigate = useNavigate();
