@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../App";
-import "./Navbar.css";
+import "../styles/Navbar.css";
 
 export default function Navbar() {
   const navigate = useNavigate();
