@@ -1,11 +1,12 @@
 import React from "react";
-import "./home.css";
+import "./Home.css";
 
 function Home() {
   return (
-    <div className="home">
-      <div>
-        <h3>You Are successfully Login</h3>
+    <div className="home-container">
+      <div className="home-box">
+        <h2>Welcome!</h2>
+        <p>You are successfully logged in.</p>
       </div>
     </div>
   );

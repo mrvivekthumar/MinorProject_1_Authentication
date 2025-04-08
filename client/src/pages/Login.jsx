@@ -6,73 +6,48 @@ import "./Login.css";
 
 function Login() {
   const navigate = useNavigate();
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-  });
+  const [data, setData] = useState({ email: "", password: "" });
 
   const loginUser = async (e) => {
     e.preventDefault();
     const { email, password } = data;
     try {
-      const { data } = await axios.post("/login", {
-        email,
-        password,
-      });
-      if (data.error) {
-        toast.error(data.error);
+      const response = await axios.post("/login", { email, password });
+      if (response.data.error) {
+        toast.error(response.data.error);
       } else {
-        setData({});
-        navigate("/");
+        toast.success("Login successful!");
+        setData({ email: "", password: "" });
+        navigate("/home");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
   return (
-    <div class=" flex-r container">
-      <div class="flex-r login-wrapper">
-        <div class="login-text">
-          <h3>Log in</h3>
-          <p>Mastering The Art Of Event </p>
-
-          <form class="flex-c" onSubmit={loginUser}>
-            <div class="input-box">
-              <span class="label">E-mail</span>
-              <div class=" flex-r input">
-                <input
-                  type="email"
-                  placeholder="name@abc.com"
-                  value={data.email}
-                  onChange={(e) => setData({ ...data, email: e.target.value })}
-                />
-              </div>
-            </div>
-
-            <div class="input-box">
-              <span class="label">Password</span>
-              <div class="flex-r input">
-                <input
-                  type="password"
-                  placeholder="password"
-                  value={data.password}
-                  onChange={(e) =>
-                    setData({ ...data, password: e.target.value })
-                  }
-                />
-              </div>
-            </div>
-
-            <div class="check">
-              <input type="checkbox" name="" id="" />
-              <span>I've read and agree with T&C</span>
-            </div>
-
-            <input class="btn" type="submit" value="Create an Account" />
-            <span class="extra-line"></span>
-          </form>
-        </div>
+    <div className="auth-container">
+      <div className="auth-card">
+        <h2>Login</h2>
+        <form onSubmit={loginUser}>
+          <label>Email</label>
+          <input
+            type="email"
+            placeholder="Enter email"
+            value={data.email}
+            onChange={(e) => setData({ ...data, email: e.target.value })}
+            required
+          />
+          <label>Password</label>
+          <input
+            type="password"
+            placeholder="Enter password"
+            value={data.password}
+            onChange={(e) => setData({ ...data, password: e.target.value })}
+            required
+          />
+          <button type="submit">Login</button>
+        </form>
       </div>
     </div>
   );

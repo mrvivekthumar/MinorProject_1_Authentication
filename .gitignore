@@ -1,2 +1,10 @@
 /client/node_modules
 /server/node_modules
+
+*.eslintrc.cjs
+
+/server/.env
+
+vivek.txt
+
+Dockerfile
