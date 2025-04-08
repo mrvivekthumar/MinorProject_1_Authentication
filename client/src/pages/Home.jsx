@@ -1,35 +1,70 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-hot-toast";
+import { AuthContext } from "../App";
+import "./home.css";
 
 function Home() {
   const navigate = useNavigate();
-  const [authorized, setAuthorized] = useState(true);
-  const toastShown = useRef(false);
+  const { user, isLoggedIn } = useContext(AuthContext);
 
   useEffect(() => {
-    const user = localStorage.getItem("user")
-      ? JSON.parse(localStorage.getItem("user"))
-      : null;
-
-    if (!user && !toastShown.current) {
-      toastShown.current = true; // Mark toast as shown
-      toast.error("User is not registered with their credentials");
-      setAuthorized(false);
-      setTimeout(() => {
-        navigate("/login");
-      }, 1000);
+    if (!isLoggedIn) {
+      navigate("/login");
     }
-  }, [navigate]);
+  }, [isLoggedIn, navigate]);
 
-  if (!authorized) {
-    // Do not render Home content if not authorized
+  // If not logged in, don't render anything
+  if (!isLoggedIn || !user) {
     return null;
   }
 
   return (
     <div className="home-container">
-      <h1>Welcome to the Home Page!</h1>
+      <div className="home-content">
+        <div className="welcome-section">
+          <div className="user-avatar">👤</div>
+          <h1>Welcome back, {user.name || "User"}!</h1>
+          <p className="welcome-message">You've successfully logged into your account.</p>
+        </div>
+
+        <div className="info-cards">
+          <div className="info-card">
+            <div className="card-icon">🔒</div>
+            <h3>Secure Account</h3>
+            <p>Your account is protected with industry-standard security measures.</p>
+          </div>
+
+          <div className="info-card">
+            <div className="card-icon">⚡</div>
+            <h3>Fast Access</h3>
+            <p>Quick and easy access to all your account features.</p>
+          </div>
+
+          <div className="info-card">
+            <div className="card-icon">🎯</div>
+            <h3>Personalized</h3>
+            <p>Your experience is tailored to your preferences.</p>
+          </div>
+        </div>
+
+        <div className="account-info">
+          <h2>Account Information</h2>
+          <div className="info-grid">
+            <div className="info-item">
+              <span className="info-label">Email</span>
+              <span className="info-value">{user.email}</span>
+            </div>
+            <div className="info-item">
+              <span className="info-label">Account Type</span>
+              <span className="info-value">Standard</span>
+            </div>
+            <div className="info-item">
+              <span className="info-label">Status</span>
+              <span className="info-value status-active">Active</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
