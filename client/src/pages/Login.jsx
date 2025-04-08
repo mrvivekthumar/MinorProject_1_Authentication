@@ -17,11 +17,13 @@ function Login() {
         toast.error(response.data.error);
       } else {
         toast.success("Login successful!");
+        localStorage.setItem("user", JSON.stringify(response.data.user));
         setData({ email: "", password: "" });
         navigate("/home");
       }
     } catch (error) {
       console.error(error);
+      toast.error("An error occurred during login.");
     }
   };
 
@@ -35,7 +37,9 @@ function Login() {
             type="email"
             placeholder="Enter email"
             value={data.email}
-            onChange={(e) => setData({ ...data, email: e.target.value })}
+            onChange={(e) =>
+              setData({ ...data, email: e.target.value })
+            }
             required
           />
           <label>Password</label>
@@ -43,7 +47,9 @@ function Login() {
             type="password"
             placeholder="Enter password"
             value={data.password}
-            onChange={(e) => setData({ ...data, password: e.target.value })}
+            onChange={(e) =>
+              setData({ ...data, password: e.target.value })
+            }
             required
           />
           <button type="submit">Login</button>

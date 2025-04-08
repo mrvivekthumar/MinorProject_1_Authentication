@@ -17,11 +17,13 @@ function Register() {
         toast.error(response.data.error);
       } else {
         toast.success("Registration successful!");
+        localStorage.setItem("user", JSON.stringify(response.data));
         setData({ name: "", email: "", password: "" });
-        navigate("/login");
+        navigate("/home");
       }
     } catch (error) {
       console.error(error);
+      toast.error("An error occurred during registration.");
     }
   };
 
@@ -35,7 +37,9 @@ function Register() {
             type="text"
             placeholder="Enter your name"
             value={data.name}
-            onChange={(e) => setData({ ...data, name: e.target.value })}
+            onChange={(e) =>
+              setData({ ...data, name: e.target.value })
+            }
             required
           />
           <label>Email</label>
@@ -43,7 +47,9 @@ function Register() {
             type="email"
             placeholder="Enter email"
             value={data.email}
-            onChange={(e) => setData({ ...data, email: e.target.value })}
+            onChange={(e) =>
+              setData({ ...data, email: e.target.value })
+            }
             required
           />
           <label>Password</label>
@@ -51,7 +57,9 @@ function Register() {
             type="password"
             placeholder="Enter password"
             value={data.password}
-            onChange={(e) => setData({ ...data, password: e.target.value })}
+            onChange={(e) =>
+              setData({ ...data, password: e.target.value })
+            }
             required
           />
           <button type="submit">Register</button>

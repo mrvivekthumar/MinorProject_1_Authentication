@@ -57,28 +57,33 @@ const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    //Check If User Exist
+    // Check if user exists
     const user = await User.findOne({ email });
     if (!user) {
-      return res.json({
-        error: "No User Found",
-      });
+      return res.status(404).json({ error: "No user found" });
     }
 
-    //Check If Password Is Matched
+    // Check password
     const match = await comparePassword(password, user.password);
-    if (match) {
-      res.json("passwored matched");
-    }
     if (!match) {
-      res.json({
-        error: "password did Not Match",
-      });
+      return res.status(401).json({ error: "Password did not match" });
     }
+
+    // Success: return user or token
+    return res.status(200).json({
+      message: "Login successful",
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+      },
+    });
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    return res.status(500).json({ error: "Server error" });
   }
 };
+
 
 module.exports = {
   test,
