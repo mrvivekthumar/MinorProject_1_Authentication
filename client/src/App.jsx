@@ -9,7 +9,8 @@ import axios from "axios";
 import { Toaster } from "react-hot-toast";
 
 // Set global axios defaults
-axios.defaults.baseURL = "http://localhost:8000";
+// axios.defaults.baseURL = "http://localhost:8000";
+axios.defaults.baseURL = "https://minor-project-1-authentication-mc3v.vercel.app";
 axios.defaults.withCredentials = true;
 
 // Create a context for authentication state
