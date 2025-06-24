@@ -16,7 +16,11 @@ mongoose
 
 // Middleware
 app.use(cors({
-  origin: process.env.CLIENT_URL || "http://localhost:5173",
+  origin: [
+    "http://localhost:5173", // For local development
+    "https://minor-project-1-authentication.vercel.app" // For frontend URL
+
+  ],
   credentials: true
 }));
 app.use(express.json());
@@ -25,8 +29,16 @@ app.use(cookieParser());
 // Import routes
 const authRoutes = require("./routes/authRoutes");
 
+
 // Mount routes
 app.use("/api/auth", authRoutes);
+
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    message: "Backend API is running successfully! 🚀"
+  });
+});
 
 // 404 handler
 app.use((req, res) => {
@@ -36,5 +48,10 @@ app.use((req, res) => {
   });
 });
 
-const port = process.env.PORT || 8000;
-app.listen(port, () => console.log(`🚀 Server is running on port ${port}`));
+// Export the app for Vercel
+module.exports = app;
+
+if (process.env.NODE_ENV !== 'production') {
+  const port = process.env.PORT || 8000;
+  app.listen(port, () => console.log(`🚀 Server is running on port ${port}`));
+}
