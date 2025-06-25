@@ -44,9 +44,8 @@ function Register() {
         toast.error(response.data.error);
       } else {
         toast.success("Registration successful!");
-        login(response.data.user);
         setData({ name: "", email: "", password: "" });
-        navigate("/home");
+        navigate("/login");
       }
     } catch (error) {
       console.error("Registration error:", error);

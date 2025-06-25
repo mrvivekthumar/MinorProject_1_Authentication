@@ -9,9 +9,16 @@ import axios from "axios";
 import { Toaster } from "react-hot-toast";
 
 // Set global axios defaults
-// axios.defaults.baseURL = "http://localhost:8000";
-axios.defaults.baseURL = "https://minor-project-1-authentication-mc3v.vercel.app";
+axios.defaults.baseURL = process.env.NODE_ENV === 'production'
+  ? "https://minor-project-1-authentication-mc3v.vercel.app"  // Deployed backend
+  : "http://localhost:8000";
 axios.defaults.withCredentials = true;
+
+
+console.log('🔍 Frontend Environment:');
+console.log('NODE_ENV:', process.env.NODE_ENV);
+console.log('API Base URL:', axios.defaults.baseURL);
+console.log('Is Production:', process.env.NODE_ENV === 'production');
 
 // Create a context for authentication state
 export const AuthContext = createContext();

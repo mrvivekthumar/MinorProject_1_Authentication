@@ -4,6 +4,6 @@
 *.eslintrc.cjs
 
 /server/.env
-
+/client/.env
 vivek.txt
 .vercel
